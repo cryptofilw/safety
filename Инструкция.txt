@@ -3,7 +3,7 @@
 Вам понадобится ТОЛЬКО ФАЙЛ "function.py"!!!
 
 В терминал после открытия файла нужно ввести команду:
-pip install cryptography
+pip install -r requirements.txt
 
 Дальше следуйте правилам ниже:
 
