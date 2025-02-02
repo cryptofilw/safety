@@ -1,16 +1,17 @@
 from cryptography.fernet import Fernet
-
+import time
 
 def create_file():
 
-    print('Начинаем создание файла')
-    file_name = input('Введите название файла (включая ".txt"): ')
+    time.sleep(1)
+    file_name = input('Введите название файла, который хотите создать (включая ".txt"): ')
     file_text = input('Введите текст, который хотите вписать в файл (ту самую приватную информацию): ')
 
     # Создаём файл
     with open(f'{file_name}', 'w') as file:
         file.write(f"{file_text}")
         print(f'Новый файл "{file_name}" создан')
+    time.sleep(1)
 
     # Зашифровать?
     print(f'Желаете зашифровать файл "{file_name}"? 1. Да 2. Нет')
@@ -33,26 +34,35 @@ def create_file():
         encrypted_file_name = file_name[0:-4]+'_encrypted.txt'
         with open(f'{encrypted_file_name}', 'wb') as file:
             file.write(encrypted_text)
-            print(f'Содержимое файла "{file_name}" успешно зашифровано в новый файл "{encrypted_file_name}"')
+        print(f'Содержимое файла "{file_name}" успешно зашифровано в новый файл "{encrypted_file_name}"')
+        time.sleep(1)
 
         # Создание файла с ключом для расшифровки
         key_file_name = file_name[0:-4]+'_key.txt'
         with open(f'{key_file_name}', 'w') as file:
             file.write(f'Ключ для расшифровки файла "{encrypted_file_name}" сохранён ниже:\n\n{key.decode()}')
-            print(f'Ключ для расшифровки файла "{encrypted_file_name}" сохранён в файл "{key_file_name}"')
-            print('Шифрование завершено')
+        print(f'Ключ для расшифровки файла "{encrypted_file_name}" сохранён в файл "{key_file_name}"')
+        time.sleep(2)
+        print(f'\nОригинальный файл - "{file_name}"\nЗашифрованный файл -"{encrypted_file_name}"\nКлюч - "{key_file_name}"')
+        time.sleep(5)
+        print('Шифрование завершено')
+
 
     # Нет, не шифровать файл
     if choose_2 == 2:
         print('Вы выбрали не шифровать созданный файл')
+        time.sleep(1)
+
 
 
 def encrypt_file():
 
     # Выбираем и открываем файл
+    time.sleep(1)
     file_name = input('Введите название файла, который хотите зашифровать (включая ".txt"): ')
     with open(f'{file_name}', 'rb') as file:
         file_text_b = file.read()
+    time.sleep(1)
 
     # Процесс шифрования
     key = Fernet.generate_key()
@@ -63,18 +73,24 @@ def encrypt_file():
     encrypted_file_name = file_name[0:-4] + '_encrypted.txt'
     with open(f'{encrypted_file_name}', 'wb') as file:
         file.write(encrypted_text)
-        print(f'Содержимое файла "{file_name}" успешно зашифровано в новый файл "{encrypted_file_name}"')
+    print(f'Содержимое файла "{file_name}" успешно зашифровано в новый файл "{encrypted_file_name}"')
+    time.sleep(1)
 
     # Создание файла с ключом для расшифровки
     key_file_name = file_name[0:-4] + '_key.txt'
     with open(f'{key_file_name}', 'w') as file:
         file.write(f'Ключ для расшифровки файла "{encrypted_file_name}" сохранён ниже:\n\n{key.decode()}')
-        print(f'Ключ для расшифровки файла "{encrypted_file_name}" сохранён в файл "{key_file_name}"')
-        print('По желанию вы можете сохранить файл в другом месте. Или же сохранить ключ, а сам файл удалить в целях безопасности')
-        print('Шифрование завершено')
+
+    print(f'Ключ для расшифровки файла "{encrypted_file_name}" сохранён в файл "{key_file_name}"')
+    time.sleep(2)
+    print(f'\nОригинальный файл - "{file_name}"\nЗашифрованный файл -"{encrypted_file_name}"\nКлюч - "{key_file_name}"')
+    time.sleep(5)
+    print('Шифрование завершено')
 
 
 def decrypt_file():
+
+    # Выбираем и открываем файл
     file_name = input('Введите название файла, который хотите расшифровать (включая ".txt"): ')
     with open(f'{file_name}', 'rb') as file:
         encrypted_text = file.read()
@@ -83,9 +99,11 @@ def decrypt_file():
     key_for_decode = input(f'Введите ключ для расшифровки файла "{file_name}": ')
     cipher = Fernet(key_for_decode)
     decrypted_text = cipher.decrypt(encrypted_text).decode()
+    time.sleep(1)
 
     # Файл расшифрован
     print(f'Содержимое файла:\n{decrypted_text}\n')
+    time.sleep(1)
 
     # Сохранение файла
     print('Желаете сохранить содержимое в отдельный файл? 1. Да 2. Нет')
@@ -98,7 +116,9 @@ def decrypt_file():
         name = input('Введите имя нового файла (включая ".txt"): ')
         with open(name, 'w') as file:
             file.write(decrypted_text)
+        time.sleep(1)
         print(f'Файл "{name}" сохранён')
+        print(f'\nЗашифрованный файл - "{file_name}"\nРасшифрованный файл - "{name}"')
 
 
 def function():
@@ -125,4 +145,4 @@ def function():
 
 
     finally:
-        print('Программа завершена')
+        print('\nПрограмма завершена')
