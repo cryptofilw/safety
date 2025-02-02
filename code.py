@@ -1,5 +1,7 @@
 from cryptography.fernet import Fernet
 import time
+from datetime import datetime
+
 
 def create_file():
 
@@ -40,7 +42,7 @@ def create_file():
         # Создание файла с ключом для расшифровки
         key_file_name = file_name[0:-4]+'_key.txt'
         with open(f'{key_file_name}', 'w') as file:
-            file.write(f'Ключ для расшифровки файла "{encrypted_file_name}" сохранён ниже:\n\n{key.decode()}')
+            file.write(f'Ключ для расшифровки файла "{encrypted_file_name}" сохранён ниже:\n\n{key.decode()}\n\nФайл "{encrypted_file_name}" был зашифрован в это время: {datetime.now().replace(microsecond=0)}')
         print(f'Ключ для расшифровки файла "{encrypted_file_name}" сохранён в файл "{key_file_name}"')
         time.sleep(2)
         print(f'\nОригинальный файл - "{file_name}"\nЗашифрованный файл -"{encrypted_file_name}"\nКлюч - "{key_file_name}"')
@@ -79,7 +81,7 @@ def encrypt_file():
     # Создание файла с ключом для расшифровки
     key_file_name = file_name[0:-4] + '_key.txt'
     with open(f'{key_file_name}', 'w') as file:
-        file.write(f'Ключ для расшифровки файла "{encrypted_file_name}" сохранён ниже:\n\n{key.decode()}')
+        file.write(f'Ключ для расшифровки файла "{encrypted_file_name}" сохранён ниже:\n\n{key.decode()}\n\nФайл "{encrypted_file_name}" был зашифрован в это время: {datetime.now().replace(microsecond=0)}')
 
     print(f'Ключ для расшифровки файла "{encrypted_file_name}" сохранён в файл "{key_file_name}"')
     time.sleep(2)
