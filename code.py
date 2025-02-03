@@ -125,7 +125,11 @@ def decrypt_file():
 
     # Создание файла
     if new_file == 1:
+
         name = input('Введите имя нового файла (включая ".txt"): ')
+        while not name.endswith(".txt"):
+            name = input('Введите название файла (Обязательно включая ".txt"): ')
+
         with open(name, 'w') as file:
             file.write(decrypted_text)
         time.sleep(1)
