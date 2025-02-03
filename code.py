@@ -7,6 +7,9 @@ def create_file():
 
     time.sleep(1)
     file_name = input('Введите название файла, который хотите создать (включая ".txt"): ')
+    while not file_name.endswith(".txt"):
+        file_name = input('Введите название файла (Обязательно включая ".txt"): ')
+
     file_text = input('Введите текст, который хотите вписать в файл (ту самую приватную информацию): ')
 
     # Создаём файл
@@ -62,6 +65,9 @@ def encrypt_file():
     # Выбираем и открываем файл
     time.sleep(1)
     file_name = input('Введите название файла, который хотите зашифровать (включая ".txt"): ')
+    while not file_name.endswith(".txt"):
+        file_name = input('Введите название файла (Обязательно включая ".txt"): ')
+
     with open(f'{file_name}', 'rb') as file:
         file_text_b = file.read()
     time.sleep(1)
@@ -90,10 +96,14 @@ def encrypt_file():
     print('Шифрование завершено')
 
 
+
 def decrypt_file():
 
     # Выбираем и открываем файл
     file_name = input('Введите название файла, который хотите расшифровать (включая ".txt"): ')
+    while not file_name.endswith(".txt"):
+        file_name = input('Введите название файла (Обязательно включая ".txt"): ')
+
     with open(f'{file_name}', 'rb') as file:
         encrypted_text = file.read()
 
@@ -121,6 +131,7 @@ def decrypt_file():
         time.sleep(1)
         print(f'Файл "{name}" сохранён')
         print(f'\nЗашифрованный файл - "{file_name}"\nРасшифрованный файл - "{name}"')
+
 
 
 def function():
