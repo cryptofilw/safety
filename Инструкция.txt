@@ -32,3 +32,9 @@ pip install -r requirements.txt
 9. Дополнительная защита: для максимальной безопасности, вы можете зашифровать файл с ключом
 
 10. Если вы потеряете ключ, то расшифровать зашифрованный файл будет НЕВОЗМОЖНО
+
+PS - Если хотите отблагодарить:
+EVM - 0xB64453083c1b45C9011aa4FA1Ae7d6900D6077C0
+SOL - 92jKMLXJrZJRz3GebscJWKtcesEL9PVZNiVAFc2HjyUo
+TON - UQCcYfFZfh0YmFfQcH9C2J288s1DO6TXelDSqp3DHDyUFYp5
+TRX - TFkAETrYqQQHSPtMUbe1JPT7YYWBTKAKVs

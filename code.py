@@ -1,6 +1,7 @@
 from cryptography.fernet import Fernet
-import time
 from datetime import datetime
+import time
+
 
 
 def create_file():
@@ -59,7 +60,6 @@ def create_file():
         time.sleep(1)
 
 
-
 def encrypt_file():
 
     # Выбираем и открываем файл
@@ -94,7 +94,6 @@ def encrypt_file():
     print(f'\nОригинальный файл - "{file_name}"\nЗашифрованный файл -"{encrypted_file_name}"\nКлюч - "{key_file_name}"')
     time.sleep(5)
     print('Шифрование завершено')
-
 
 
 def decrypt_file():
@@ -135,7 +134,6 @@ def decrypt_file():
         time.sleep(1)
         print(f'Файл "{name}" сохранён')
         print(f'\nЗашифрованный файл - "{file_name}"\nРасшифрованный файл - "{name}"')
-
 
 
 def function():
