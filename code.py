@@ -2,8 +2,6 @@ from cryptography.fernet import Fernet
 from datetime import datetime
 import time
 
-
-
 def create_file():
 
     time.sleep(1)
